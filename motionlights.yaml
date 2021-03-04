@@ -52,14 +52,9 @@ action:
                  {{lights}}
   - service: light.turn_on
     target: !input target_lights
-  - repeat:
-      while:
-#      - condition: template
-#        value_template: "{{ activated == none or is_state(activated, 'on') }}"
-      sequence:
-      - delay: 
-          milliseconds: "{{ delay }}"
-      - service: light.toggle
+     - delay: 
+         milliseconds: "{{ delay }}"
+  - service: light.toggle
         target: !input target_lights
   - service: scene.turn_on
     data:
