@@ -1,31 +1,40 @@
 blueprint:
   name: night motion lights
   description: >
-     Turn lights to Max then off and then return to original state
+     Turn lights to Max then after delay off and then after delay return to original state
   domain: automation
 #  source_url: 
   input:
     activated:
         name: Activated
-        description: "Toggle to activate or deactivate flashing lights."
+        description: "Turn lights to Max then after delay off and then after delay return to original state"
         selector:
             entity:
     target_lights:
         name: Lights
-        description: "To flashing lights"
+        description: "On max, off the restore inital state"
         selector:
           target:
             entity:
               domain: light
-    delay:
-      name: (OPTIONAL) First Delay
-      description: "First Delay"
+    delay_off:
+      name: (OPTIONAL) Off Delay
+      description: "Off Delay"
       default: 1000
       selector:
         number:
           min: 0
           max: 20000
-          unit_of_measurement: milliseconds
+          unit_of_measurement: miliseconds
+    delay_restore:
+      name: (OPTIONAL) Restore Delay
+      description: "Restore Delay"
+      default: 1
+      selector:
+        number:
+          min: 0
+          max: 2400
+          unit_of_measurement: seconds
           
 mode: restart
 max_exceeded: silent
@@ -37,7 +46,9 @@ trigger:
 
 variables:
   activated: !input activated
-  delay: !input delay
+#  delay: !input delay
+  delay_off: !input delay
+  delay_restore: !input delay
   target_lights: !input target_lights
 
 condition: []
@@ -57,12 +68,12 @@ action:
     data_template:
       brightness: 254
   - delay: 
-      milliseconds: "{{ delay }}"
+      milliseconds: "{{ delay_off }}"
 #  - service: light.toggle
   - service: light.turn_off
     target: !input target_lights
   - delay: 
-      milliseconds: "{{ delay }}"
+      seconds: "{{ delay_restore }}"
   - service: scene.turn_on
     data:
       entity_id: scene.all_lights_snapshot
