@@ -47,8 +47,8 @@ trigger:
 variables:
   activated: !input activated
 #  delay: !input delay
-  delay_off: !input delay
-  delay_restore: !input delay
+  delay_off: !input delay_off
+  delay_restore: !input delay_restore
   target_lights: !input target_lights
 
 condition: []
