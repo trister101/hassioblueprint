@@ -54,8 +54,8 @@ action:
     target: !input target_lights
   - repeat:
       while:
-      - condition: template
-        value_template: "{{ activated == none or is_state(activated, 'on') }}"
+#      - condition: template
+#        value_template: "{{ activated == none or is_state(activated, 'on') }}"
       sequence:
       - delay: 
           milliseconds: "{{ delay }}"
