@@ -18,7 +18,7 @@ blueprint:
             entity:
               domain: light
     delay_off:
-      name: (OPTIONAL) Off Delay
+      name: Off Delay
       description: "Off Delay"
       default: 1000
       selector:
@@ -27,9 +27,9 @@ blueprint:
           max: 20000
           unit_of_measurement: miliseconds
     delay_restore:
-      name: (OPTIONAL) Restore Delay
+      name: Restore Delay
       description: "Restore Delay"
-      default: 1
+      default: 10
       selector:
         number:
           min: 0
