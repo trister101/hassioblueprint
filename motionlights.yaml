@@ -52,8 +52,8 @@ action:
                  {{lights}}
   - service: light.turn_on
     target: !input target_lights
-    - delay: 
-        milliseconds: "{{ delay }}"
+  - delay: 
+      milliseconds: "{{ delay }}"
   - service: light.toggle
         target: !input target_lights
   - service: scene.turn_on
