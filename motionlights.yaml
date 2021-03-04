@@ -26,15 +26,6 @@ blueprint:
           min: 0
           max: 20000
           unit_of_measurement: milliseconds
-    delay_second:
-      name: (OPTIONAL) Second Delay
-      description: "Second Delay"
-      default: 1000
-      selector:
-        number:
-          min: 0
-          max: 20000
-          unit_of_measurement: milliseconds
           
 mode: restart
 max_exceeded: silent
@@ -47,7 +38,6 @@ trigger:
 variables:
   activated: !input activated
   delay: !input delay
-  delay_second: !input delay_first
   target_lights: !input target_lights
 
 condition: []
