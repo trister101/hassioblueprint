@@ -55,7 +55,7 @@ action:
   - delay: 
       milliseconds: "{{ delay }}"
 #  - service: light.toggle
-  - service: light.off
+  - service: light.turn_off
     target: !input target_lights
   - delay: 
       milliseconds: "{{ delay }}"
