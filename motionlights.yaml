@@ -50,8 +50,12 @@ action:
                {% set lights = states.light
                  | map(attribute='entity_id') | join(',') %}
                  {{lights}}
+#  - service: light.turn_on
+#    target: !input target_lights
   - service: light.turn_on
-    target: !input target_lights
+    data_template:
+      target: !input target_lights
+      brightness: 254
   - delay: 
       milliseconds: "{{ delay }}"
 #  - service: light.toggle
